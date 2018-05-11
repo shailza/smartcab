@@ -65,7 +65,7 @@ class LearningAgent(Agent):
         #   If it is not, create a dictionary in the Q-table for the current 'state'
         #   For each action, set the Q-value for the state-action pair to 0
         
-        state = waypoint, inputs['light'], inputs['oncoming']
+        state = waypoint, inputs['light'],inputs['left'],inputs['oncoming']
         if self.learning == True:
             if state not in self.Q.keys():
                 self.createQ(state)
@@ -118,7 +118,7 @@ class LearningAgent(Agent):
         # Set the agent state and default action
         self.state = state
         self.next_waypoint = self.planner.next_waypoint()
-        action = None
+        action = random.choice(self.valid_actions)
 
         ########### 
         ## TO DO ##
